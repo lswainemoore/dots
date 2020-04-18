@@ -1,5 +1,6 @@
 # git
 alias gs="git status"
+alias ga="git add"
 alias gd="git diff"
 alias gcm="git commit -m"
 alias gl="git log"
