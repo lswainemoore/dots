@@ -1,0 +1,11 @@
+# git
+alias gs="git status"
+alias gd="git diff"
+alias gcm="git commit -m"
+alias gl="git log"
+alias gb="git branch"
+alias gch="git checkout HEAD --"
+alias gds="git diff --staged"
+alias gss="git stash save"
+alias gsa="git stash apply"
+alias gsl="git stash list"
