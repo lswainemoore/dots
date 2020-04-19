@@ -81,6 +81,7 @@ filetype plugin indent on
 " https://gist.github.com/simonista/8703722
 " https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 " https://vimconfig.com
+" https://learnvimscriptthehardway.stevelosh.com
 
 " TODO
 " get vundle set up
