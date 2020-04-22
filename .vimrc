@@ -71,6 +71,9 @@ autocmd BufWritePre * if &ft =~ 'sh\|perl\|python' | :call <SID>StripTrailingWhi
 set listchars=tab:▸\ ,eol:¬,space:.
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
+# MAKE DELETE WORK IN INSERT MODE
+set backspace=indent,eol,start
+
 " RANDOM STUFF
 syntax on
 set number
