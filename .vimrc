@@ -100,6 +100,10 @@ function GitReset()
 endfunction
 nnoremap <leader>gr :call GitReset()<cr>
 
+" RELOAD CONFIG (META)
+" see: https://superuser.com/a/132030
+nnoremap <leader>rl :so $MYVIMRC<cr>
+
 " RANDOM STUFF
 syntax on
 set number
