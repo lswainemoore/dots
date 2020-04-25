@@ -1,6 +1,5 @@
+" KEEP THIS UP TOP
 :let mapleader = ","
-
-:imap jj <Esc>
 
 " SUBLIME-LIKE LINE DELETION
 :imap <c-S-k> <esc>ddi
@@ -74,11 +73,39 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " MAKE DELETE WORK IN INSERT MODE
 set backspace=indent,eol,start
 
+" GIT DIFF
+" source: https://www.monolune.com/showing-git-diff-in-vim/
+function GitDiff()
+    :silent write
+    :silent execute '!git diff --color=always -- ' . expand('%:p') . ' | less --RAW-CONTROL-CHARS'
+    :redraw!
+endfunction
+nnoremap <leader>gd :call GitDiff()<cr>
+
+" GIT ADD CURRENT FILE
+" adapted from above ^
+function GitAdd()
+    :silent write
+    :silent execute '!git add ' . expand('%:p')
+    :redraw!
+endfunction
+nnoremap <leader>ga :call GitAdd()<cr>
+
+" GIT RESET CURRENT FILE
+" adapted from above ^^
+function GitReset()
+    :silent write
+    :silent execute '!git reset ' . expand('%:p')
+    :redraw!
+endfunction
+nnoremap <leader>gr :call GitReset()<cr>
+
 " RANDOM STUFF
 syntax on
 set number
 set ruler
 filetype plugin indent on
+:imap jj <Esc>
 
 " GOOD RESOURCES
 " https://gist.github.com/simonista/8703722
