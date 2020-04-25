@@ -1,6 +1,26 @@
 " KEEP THIS UP TOP
 :let mapleader = ","
 
+" PLUGINS
+
+" AUTO-INSTALL
+" see: https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'mg979/vim-visual-multi'
+" Plug 'terryma/vim-multiple-cursors'  " i didn't love this one as much but it's better supported
+Plug 'vim-airline/vim-airline'
+call plug#end()
+
+
 " SUBLIME-LIKE LINE DELETION
 :imap <c-S-k> <esc>ddi
 :map <c-S-k> dd
@@ -107,9 +127,12 @@ nnoremap <leader>rl :so $MYVIMRC<cr>
 " RANDOM STUFF
 syntax on
 set number
-set ruler
 filetype plugin indent on
 :imap jj <Esc>
+
+" FOR VIM-AIRLINE
+" set ruler  " disabling while using vim-airline
+set noshowmode  " see https://github.com/vim-airline/vim-airline/issues/538
 
 " GOOD RESOURCES
 " https://gist.github.com/simonista/8703722
@@ -117,6 +140,5 @@ filetype plugin indent on
 " https://vimconfig.com
 " https://learnvimscriptthehardway.stevelosh.com
 
+
 " TODO
-" get vundle set up
-" install https://github.com/Vimjas/vim-python-pep8-indent
