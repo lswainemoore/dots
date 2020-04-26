@@ -6,10 +6,23 @@
 pwd=$(pwd)
 check_and_link () {
   # this is a lie. it doesn't actually check rn
-  ln -sFv $pwd/$1 ~/$1
+  ln -sfFv $pwd/$1 ~/$1
 }
 
 check_and_link ".aliases"
 check_and_link ".vimrc"
 
-ln -sFv $pwd/tools/ack-v3.3.1 /usr/local/bin/ack
+destination="/usr/local/bin/"
+link_tool() {
+  ln -sFv $pwd/tools/$1 $destination$2
+}
+check_and_link_tool () {
+  if [ -w $destination ]; then
+    link_tool $1 $2
+  else
+    echo "(using sudo)"
+    sudo link_tool $1 $2
+  fi
+}
+
+check_and_link_tool "ack-v3.3.1" "ack"
