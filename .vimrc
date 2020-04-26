@@ -128,8 +128,13 @@ nnoremap <leader>rl :so $MYVIMRC<cr>
 " RANDOM STUFF
 syntax on
 set number
+set expandtab
 filetype plugin indent on
 :imap jj <Esc>
+
+" CORRECT TABBING FOR HTML, JS
+" see: https://vi.stackexchange.com/a/12917
+autocmd BufRead,BufNewFile *.htm,*.html,*.js setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " FOR VIM-AIRLINE
 " set ruler  " disabling while using vim-airline
