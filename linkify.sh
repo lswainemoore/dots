@@ -13,15 +13,12 @@ check_and_link ".aliases"
 check_and_link ".vimrc"
 
 destination="/usr/local/bin/"
-link_tool() {
-  ln -sFv $pwd/tools/$1 $destination$2
-}
 check_and_link_tool () {
   if [ -w $destination ]; then
-    link_tool $1 $2
+    ln -sFv $pwd/tools/$1 $destination$2
   else
     echo "(using sudo)"
-    sudo link_tool $1 $2
+    sudo ln -sFv $pwd/tools/$1 $destination$2
   fi
 }
 
