@@ -19,6 +19,8 @@ Plug 'mg979/vim-visual-multi'
 " Plug 'terryma/vim-multiple-cursors'  " i didn't love this one as much but it's better supported
 Plug 'vim-airline/vim-airline'
 Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 
