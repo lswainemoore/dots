@@ -11,3 +11,5 @@ check_and_link () {
 
 check_and_link ".aliases"
 check_and_link ".vimrc"
+
+ln -sFv $pwd/tools/ack-v3.3.1 /usr/local/bin/ack

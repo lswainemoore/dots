@@ -18,6 +18,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'mg979/vim-visual-multi'
 " Plug 'terryma/vim-multiple-cursors'  " i didn't love this one as much but it's better supported
 Plug 'vim-airline/vim-airline'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 
