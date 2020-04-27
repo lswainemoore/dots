@@ -21,8 +21,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
+" EMMET CUSTOMIZATION
+" only allow for html/css
+let g:user_emmet_install_global = 0  
+autocmd FileType html,css EmmetInstall
+" new leader
+let g:user_emmet_leader_key=','
+
+" FZF CUSTOMIZATION
+nnoremap <c-p> :FZF<cr>
 
 " SUBLIME-LIKE LINE DELETION
 :imap <c-S-k> <esc>ddi
@@ -100,7 +110,7 @@ set backspace=indent,eol,start
 " source: https://www.monolune.com/showing-git-diff-in-vim/
 function GitDiff()
     :silent write
-    :silent execute '!git diff --color=always -- ' . expand('%:p') . ' | less --RAW-CONTROL-CHARS'
+    :silent execute '!git diff --color=always -- ' . fnameescape(expand('%:p')) . ' | less --RAW-CONTROL-CHARS'
     :redraw!
 endfunction
 nnoremap <leader>gd :call GitDiff()<cr>
@@ -109,7 +119,7 @@ nnoremap <leader>gd :call GitDiff()<cr>
 " adapted from above ^
 function GitAdd()
     :silent write
-    :silent execute '!git add ' . expand('%:p')
+    :silent execute '!git add ' . fnameescape(expand('%:p'))
     :redraw!
 endfunction
 nnoremap <leader>ga :call GitAdd()<cr>
@@ -118,7 +128,7 @@ nnoremap <leader>ga :call GitAdd()<cr>
 " adapted from above ^^
 function GitReset()
     :silent write
-    :silent execute '!git reset ' . expand('%:p')
+    :silent execute '!git reset ' . fnameescape(expand('%:p'))
     :redraw!
 endfunction
 nnoremap <leader>gr :call GitReset()<cr>
