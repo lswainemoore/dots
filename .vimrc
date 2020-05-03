@@ -33,6 +33,32 @@ let g:user_emmet_leader_key=','
 
 " FZF CUSTOMIZATION
 nnoremap <c-p> :FZF<cr>
+nnoremap <leader>e :Tags<cr>
+nnoremap <leader>r :BTags<cr>
+let g:fzf_buffers_jump = 1
+let g:fzf_tags_command = 'ctags -V -R --excmd=number --exclude="*.pyc" --exclude="*.min.js" --exclude="*.zip" --exclude="*compiled.js" --exclude="local/*"'
+command! FZFMru call fzf#run({
+\  'source':  v:oldfiles,
+\  'sink':    'e',
+\  'options': '-m -x +s',
+\  'down':    '40%'})
+nnoremap <leader>b :FZFMru<cr>
+nnoremap <leader>d :call fzf#vim#tags('^' . expand('<cword>'), {'options': '--exact --select-1 --exit-0 +i'})<CR>
+
+let g:airline#extensions#tabline#enabled = 1
+
+" PREVIEW WINDOW
+" source: https://github.com/junegunn/fzf.vim/issues/800#issuecomment-552224315
+let plugins_dir='~/.vim/plugged' 
+let preview_file = plugins_dir . "/fzf.vim/bin/preview.sh"
+command! -bang -nargs=* Tags
+  \ call fzf#vim#tags(<q-args>, {
+  \      'down': '40%',
+  \      'options': '
+  \         --with-nth 1,2
+  \         --preview-window="70%"
+  \         --preview ''' . preview_file . ' {2}:$(echo {3} | cut -d ";" -f 1)'''
+  \ }, <bang>0)
 
 " SUBLIME-LIKE LINE DELETION
 :imap <c-S-k> <esc>ddi
@@ -135,7 +161,7 @@ nnoremap <leader>gr :call GitReset()<cr>
 
 " RELOAD CONFIG (META)
 " see: https://superuser.com/a/132030
-nnoremap <leader>rl :so $MYVIMRC<cr>
+nnoremap <leader>lo :so $MYVIMRC<cr>
 
 " RANDOM STUFF
 syntax on
@@ -144,6 +170,16 @@ set expandtab
 filetype plugin indent on
 :imap jj <Esc>
 
+" CHEATING
+set mouse=n
+
+" BETTER FOLDING
+" source: https://unix.stackexchange.com/a/141104
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
 " CORRECT TABBING FOR HTML, JS
 " see: https://vi.stackexchange.com/a/12917
 autocmd BufRead,BufNewFile *.htm,*.html,*.js setlocal tabstop=2 shiftwidth=2 softtabstop=2
@@ -151,6 +187,27 @@ autocmd BufRead,BufNewFile *.htm,*.html,*.js setlocal tabstop=2 shiftwidth=2 sof
 " FOR VIM-AIRLINE
 " set ruler  " disabling while using vim-airline
 set noshowmode  " see https://github.com/vim-airline/vim-airline/issues/538
+
+" TAB TO COMPLETE
+" source: https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col
+        return "\<tab>"
+    endif
+
+    let char = getline('.')[col - 1]
+    if char =~ '\k'
+        " There's an identifier before the cursor, so complete the identifier.
+        return "\<c-p>"
+    else
+        return "\<tab>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
+
+inoremap ipdb import ipdb; ipdb.set_trace()
 
 " GOOD RESOURCES
 " https://gist.github.com/simonista/8703722
