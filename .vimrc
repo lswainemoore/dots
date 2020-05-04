@@ -115,15 +115,23 @@ endfunction
 nnoremap <leader>cc :call ToggleComment()<cr>
 vnoremap <leader>cc :call ToggleComment()<cr>
 
-" STRIP TRAILING WHITESPACE
-" source https://unix.stackexchange.com/a/75438
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-autocmd BufWritePre * if &ft =~ 'sh\|perl\|python' | :call <SID>StripTrailingWhitespaces() | endif
+" HELPER FUNCTION TO PREVENT FUNCTIONS FROM OVERWRITING STATE
+" src: https://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" STRIP TRAILING WHITESPACE FOR CERTAIN FILES
+" src: https://unix.stackexchange.com/a/75438 and https://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/
+autocmd BufWritePre * if &ft =~ 'sh\|perl\|python\|javascript\|html' | :call Preserve("%s/\\s\\+$//e") | endif
 
 " VISUALIZE WHITESPACE
 " see: https://gist.github.com/simonista/8703722
