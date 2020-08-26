@@ -13,3 +13,6 @@ alias gsl="git stash list"
 alias gm="git merge"
 alias gma="git merge --abort"
 alias gc="git checkout"
+
+# sublime
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
