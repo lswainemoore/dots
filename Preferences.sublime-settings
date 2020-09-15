@@ -1,0 +1,10 @@
+{
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"font_size": 10,
+	"ignored_packages":
+	[
+	],
+	"theme": "Material-Theme.sublime-theme",
+	"trim_trailing_white_space_on_save": true
+}
