@@ -112,3 +112,6 @@ bindkey '^q' push-line-or-edit
 
 # https://github.com/junegunn/fzf/issues/634
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
+
+# https://stackoverflow.com/a/48341347
+PROMPT='%{$fg[yellow]%}[%D{%Y%m%d %T}] '$PROMPT
