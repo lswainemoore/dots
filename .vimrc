@@ -192,16 +192,18 @@ nnoremap <leader>lo :so $MYVIMRC<cr>
 " RANDOM STUFF
 syntax on
 set number
+set relativenumber
 set expandtab
 filetype plugin indent on
 :imap jj <Esc>
+:imap jkj <c-o>
 
 " CHEATING
 set mouse=n
 
 " BETTER FOLDING
 " source: https://unix.stackexchange.com/a/141104
-set foldmethod=indent   
+set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
