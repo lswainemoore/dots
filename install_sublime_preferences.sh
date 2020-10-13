@@ -1,6 +1,6 @@
 HOME_DIR=~/
-SUBLIME_DIR="/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"
-DOTS_DIR=/dots/
+SUBLIME_DIR="Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"
+DOTS_DIR=dots/
 PREF_FILE=Preferences.sublime-settings
 KEYMAP_FILE="Default\ \(OSX\).sublime-keymap"
 echo "remove main preferences"
