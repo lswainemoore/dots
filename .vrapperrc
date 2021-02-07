@@ -1,0 +1,2 @@
+" eclipse requires a different file :/
+inoremap jj <ESC>

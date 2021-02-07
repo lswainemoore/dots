@@ -11,6 +11,7 @@ check_and_link () {
 
 check_and_link ".aliases"
 check_and_link ".vimrc"
+check_and_link ".vrapperrc"
 check_and_link ".zshrc"
 
 destination="/usr/local/bin/"
