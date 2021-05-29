@@ -100,8 +100,8 @@ source $ZSH/oh-my-zsh.sh
 
 PATH=$PATH:~/Library/Python/2.7/bin
 
-source .custom_profile
 source .aliases
+source .custom_profile
 
 # this is bc we're only installing libpq, not full
 # postgres, and libpq is keg-only bc would conflict with postgres
