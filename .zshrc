@@ -103,6 +103,16 @@ PATH=$PATH:~/Library/Python/2.7/bin
 source .aliases
 source .custom_profile
 
+# see:
+# - https://unix.stackexchange.com/a/273658
+# - https://stackoverflow.com/a/394247
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   source .zsh_profile_linux
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   source .zsh_profile_mac
+fi
+
 # this is bc we're only installing libpq, not full
 # postgres, and libpq is keg-only bc would conflict with postgres
 export PATH="/usr/local/opt/libpq/bin:$PATH"
@@ -115,3 +125,4 @@ export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore -l ""'
 
 # https://stackoverflow.com/a/48341347
 PROMPT='%{$fg[yellow]%}[%D{%Y%m%d %T}] '$PROMPT
+
