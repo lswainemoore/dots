@@ -1,3 +1,4 @@
+# needs some adjusting if you want to work on linux (SUBLIME_DIR AND KEYMAP_FILE)
 HOME_DIR=~/
 SUBLIME_DIR="Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"
 DOTS_DIR=dots/

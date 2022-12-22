@@ -13,6 +13,8 @@ check_and_link ".aliases"
 check_and_link ".vimrc"
 check_and_link ".vrapperrc"
 check_and_link ".zshrc"
+check_and_link ".zsh_profile_linux"
+check_and_link ".zsh_profile_mac"
 
 destination="/usr/local/bin/"
 check_and_link_tool () {
