@@ -195,7 +195,10 @@ set number
 set relativenumber
 set expandtab
 filetype plugin indent on
-:imap jj <Esc>
+" note that we're doing something slightly different from just escape here, to
+" prevent from going backward on escape
+" see: https://vim.fandom.com/wiki/Prevent_escape_from_moving_the_cursor_one_character_to_the_left
+:imap jj <C-O>:stopinsert<CR>
 :imap jkj <c-o>
 
 " CHEATING
