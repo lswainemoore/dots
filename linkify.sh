@@ -15,6 +15,7 @@ check_and_link ".vrapperrc"
 check_and_link ".zshrc"
 check_and_link ".zsh_profile_linux"
 check_and_link ".zsh_profile_mac"
+check_and_link ".bashrc"
 
 destination="/usr/local/bin/"
 check_and_link_tool () {
