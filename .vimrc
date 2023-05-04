@@ -188,12 +188,13 @@ nnoremap <leader>gr :call GitReset()<cr>
 " RELOAD CONFIG (META)
 " see: https://superuser.com/a/132030
 nnoremap <leader>lo :so $MYVIMRC<cr>
-
+"
 " RANDOM STUFF
 syntax on
 set number
 set relativenumber
 set expandtab
+set shiftwidth=4 smarttab
 filetype plugin indent on
 " note that we're doing something slightly different from just escape here, to
 " prevent from going backward on escape
